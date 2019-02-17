@@ -1,5 +1,7 @@
 package chart;
 
+import javafx.scene.chart.BarChartBuilder;
+
 import java.util.List;
 
 public class BarChart {
@@ -19,6 +21,8 @@ public class BarChart {
     private boolean displayTitle;
     private boolean displayLegend;
 
+    public BarChart() {
+    }
 
     public BarChart(String title, String fontName, int fontSize, String fontColor, int width, int height, String backgroundColor, List<String> data, boolean displayTitle, boolean displayLegend) {
         this.title = title;
@@ -124,5 +128,89 @@ public class BarChart {
 
     public void setDisplayLegend(boolean displayLegend) {
         this.displayLegend = displayLegend;
+    }
+
+    public static class FluentBuilder {
+        private String title;
+
+        private String fontName;
+        private int fontSize;
+        private String fontColor;
+
+        private int width;
+        private int height;
+        private String backgroundColor;
+
+        private List<String> data;
+
+        private boolean displayTitle;
+        private boolean displayLegend;
+
+        public FluentBuilder() {
+        }
+
+        public FluentBuilder withTitle(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public FluentBuilder withFontName(String fontName) {
+            this.fontName = fontName;
+            return this;
+        }
+
+        public FluentBuilder withFontSize(int fontSize) {
+            this.fontSize = fontSize;
+            return this;
+        }
+
+        public FluentBuilder withFontColor(String fontColor) {
+            this.fontColor = fontColor;
+            return this;
+        }
+
+        public FluentBuilder withWidth(int width) {
+            this.width = width;
+            return this;
+        }
+
+        public FluentBuilder withHeight(int height) {
+            this.height = height;
+            return this;
+        }
+
+        public FluentBuilder withBackgroundColor(String backgroundColor) {
+            this.backgroundColor = backgroundColor;
+            return this;
+        }
+
+        public FluentBuilder withData(List<String> data) {
+            this.data = data;
+            return this;
+        }
+
+        public FluentBuilder withDisplayTitle(boolean displayTitle) {
+            this.displayTitle = displayTitle;
+            return this;
+        }
+
+        public FluentBuilder withDisplayLegend(boolean displayLegend) {
+            this.displayLegend = displayLegend;
+            return this;
+        }
+        public BarChart build(){
+            BarChart barChart = new BarChart();
+            barChart.setTitle(this.title);
+            barChart.setFontName(this.fontName);
+            barChart.setFontSize(this.fontSize);
+            barChart.setFontColor(this.fontColor);
+            barChart.setWidth(this.width);
+            barChart.setHeight(this.height);
+            barChart.setBackgroundColor(this.backgroundColor);
+            barChart.setData(this.data);
+            barChart.setDisplayTitle(this.displayTitle);
+            barChart.setDisplayLegend(this.displayLegend);
+            return barChart;
+        }
     }
 }
